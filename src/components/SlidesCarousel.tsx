@@ -11,9 +11,10 @@ interface SlideCardProps {
   slide: MaterialImageItem;
   index: number;
   rowName: string;
+  isPriority?: boolean;
 }
 
-const SlideCard: React.FC<SlideCardProps> = ({ slide, index, rowName }) => {
+const SlideCard: React.FC<SlideCardProps> = ({ slide, index, rowName, isPriority = false }) => {
   return (
     <div
       id={`slideCard-${rowName}-${index}`}
@@ -34,8 +35,11 @@ const SlideCard: React.FC<SlideCardProps> = ({ slide, index, rowName }) => {
             src={slide.src}
             alt={slide.alt || slide.label}
             className="w-full h-full object-contain block select-none slide-img-crisp"
-            loading="eager"
+            loading={isPriority ? "eager" : "lazy"}
+            fetchPriority={isPriority ? "auto" : "low"}
             decoding="async"
+            width={460}
+            height={259}
             referrerPolicy="no-referrer"
           />
         ) : (
@@ -111,6 +115,7 @@ export const SlidesCarousel: React.FC = () => {
                 slide={slide} 
                 index={index} 
                 rowName="top" 
+                isPriority={index === 0}
               />
             ))}
           </div>
@@ -128,6 +133,7 @@ export const SlidesCarousel: React.FC = () => {
                 slide={slide} 
                 index={index} 
                 rowName="bottom" 
+                isPriority={index === 0}
               />
             ))}
           </div>

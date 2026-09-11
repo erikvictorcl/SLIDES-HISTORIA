@@ -95,7 +95,10 @@ export const Hero: React.FC = () => {
                     alt="Slide de História para o ENEM no MacBook" 
                     className="w-full h-full object-contain select-none block" 
                     loading="eager"
+                    fetchPriority="high"
                     decoding="async"
+                    width={800}
+                    height={500}
                     referrerPolicy="no-referrer"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://i.imgur.com/m0LGMac.jpeg';
@@ -146,7 +149,10 @@ export const Hero: React.FC = () => {
                     alt="Material de História para o ENEM no iPhone" 
                     className="w-full h-full object-contain select-none block" 
                     loading="eager"
+                    fetchPriority="low"
                     decoding="async"
+                    width={150}
+                    height={325}
                     referrerPolicy="no-referrer"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://i.imgur.com/JDjCqwY.png';

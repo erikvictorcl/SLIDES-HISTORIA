@@ -89,14 +89,21 @@ export const ExclusiveBonuses: React.FC = () => {
                   id={`area-imagem-bonus-${bonus.id}`}
                   className="w-full aspect-[4/3] sm:aspect-[16/11] rounded-xl overflow-hidden bg-[#F8FAFD] border border-slate-100/90 flex items-center justify-center p-2.5 sm:p-3.5 relative"
                 >
-                  <img 
-                    src={bonus.imageUrl} 
-                    alt={bonus.title}
-                    className="w-full h-full object-contain select-none block"
-                    loading="lazy"
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                  />
+                  <picture className="w-full h-full flex items-center justify-center">
+                    {bonus.imageUrl.startsWith('/images/bonus/') && bonus.imageUrl.endsWith('.jpg') && (
+                      <source srcSet={bonus.imageUrl.replace('.jpg', '.webp')} type="image/webp" />
+                    )}
+                    <img 
+                      src={bonus.imageUrl} 
+                      alt={bonus.title}
+                      className="w-full h-full object-contain select-none block"
+                      loading="lazy"
+                      decoding="async"
+                      width={400}
+                      height={300}
+                      referrerPolicy="no-referrer"
+                    />
+                  </picture>
                 </div>
               </div>
 

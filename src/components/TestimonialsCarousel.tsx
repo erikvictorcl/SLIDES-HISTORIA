@@ -215,8 +215,10 @@ export const TestimonialsCarousel: React.FC = () => {
                       src={slot.imageUrl} 
                       alt={`Depoimento ${slot.id}`}
                       className="w-full h-full object-contain rounded-2xl drop-shadow-xl select-none"
-                      loading={index === 0 ? 'eager' : 'lazy'}
+                      loading="lazy"
                       decoding="async"
+                      width={335}
+                      height={570}
                       referrerPolicy="no-referrer"
                     />
                   </motion.div>
