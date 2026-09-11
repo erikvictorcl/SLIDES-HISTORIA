@@ -5,7 +5,7 @@ import { MaterialImageItem } from '../types';
 
 // =============================================================================
 // COMPONENTE DO CARD DE SLIDE
-// Proporção 16:9, cantos arredondados, sem distorção e com visual de alta nitidez
+// Proporção 16:9 rigorosa, cantos arredondados, sem distorção e com máxima nitidez
 // =============================================================================
 interface SlideCardProps {
   slide: MaterialImageItem;
@@ -17,15 +17,24 @@ const SlideCard: React.FC<SlideCardProps> = ({ slide, index, rowName }) => {
   return (
     <div
       id={`slideCard-${rowName}-${index}`}
-      className="relative w-[275px] sm:w-[350px] md:w-[410px] lg:w-[460px] aspect-[16/9] flex-shrink-0 rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 select-none group"
+      className="relative flex-shrink-0 w-[280px] sm:w-[350px] md:w-[410px] lg:w-[460px] mr-3 sm:mr-4.5 aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden bg-[#0c121e] border border-slate-800/80 shadow-md select-none"
+      style={{
+        transform: 'translateZ(0)',
+        WebkitTransform: 'translateZ(0)',
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+      }}
     >
-      <div id={`slideImage-${rowName}-${index}`} className="w-full h-full relative overflow-hidden bg-white">
+      <div 
+        id={`slideImage-${rowName}-${index}`} 
+        className="w-full h-full relative overflow-hidden bg-[#0c121e] flex items-center justify-center"
+      >
         {slide.src ? (
           <img
             src={slide.src}
             alt={slide.alt || slide.label}
-            className="w-full h-full object-contain block select-none"
-            loading="lazy"
+            className="w-full h-full object-contain block select-none slide-img-crisp"
+            loading="eager"
             decoding="async"
             referrerPolicy="no-referrer"
           />
@@ -48,7 +57,7 @@ const SlideCard: React.FC<SlideCardProps> = ({ slide, index, rowName }) => {
 };
 
 export const SlidesCarousel: React.FC = () => {
-  // Duplicação exata 2x correspondente a 50% de translação no CSS para ciclo perfeito e máxima nitidez
+  // Duplicação exata 2x para esteira com ciclo de 50% matematicamente sem pulo
   const duplicatedRow1 = [...slidesRow1, ...slidesRow1];
   const duplicatedRow2 = [...slidesRow2, ...slidesRow2];
 
@@ -79,18 +88,22 @@ export const SlidesCarousel: React.FC = () => {
 
       {/* =====================================================================
           ESTEIRA DUPLA DE SLIDES (CARROSSEL DUPLO CONTÍNUO EM LOOP INFINITO)
-          Row 1: Esquerda para a direita (20s)
-          Row 2: Direita para a esquerda (22s)
+          Row 1: Esquerda para a direita (24s)
+          Row 2: Direita para a esquerda (24s)
           ===================================================================== */}
       <div 
         id="slideTrack"
         className="relative w-full overflow-hidden select-none space-y-3.5 sm:space-y-5"
+        style={{
+          perspective: '1000px',
+          WebkitPerspective: '1000px',
+        }}
       >
         {/* 1ª FILEIRA: Move automaticamente da ESQUERDA para a DIREITA */}
         <div className="w-full overflow-hidden flex py-1">
           <div 
-            className="animate-marquee-right flex gap-3 sm:gap-4.5 items-center"
-            style={{ animationDuration: '20s' }}
+            className="animate-marquee-right flex items-center"
+            style={{ animationDuration: '24s' }}
           >
             {duplicatedRow1.map((slide, index) => (
               <SlideCard 
@@ -106,8 +119,8 @@ export const SlidesCarousel: React.FC = () => {
         {/* 2ª FILEIRA: Move automaticamente da DIREITA para a ESQUERDA */}
         <div className="w-full overflow-hidden flex py-1">
           <div 
-            className="animate-marquee-left flex gap-3 sm:gap-4.5 items-center"
-            style={{ animationDuration: '22s' }}
+            className="animate-marquee-left flex items-center"
+            style={{ animationDuration: '24s' }}
           >
             {duplicatedRow2.map((slide, index) => (
               <SlideCard 
@@ -124,3 +137,4 @@ export const SlidesCarousel: React.FC = () => {
     </section>
   );
 };
+

@@ -35,42 +35,66 @@ h1, h2, h3, h4, .font-display {
 
 /* =============================================================================
    CONTINUOUS INFINITE MARQUEE ANIMATIONS (ESTEIRA DE SLIDES DUPLA)
+   Hardware-accelerated, zero-flicker, 100% seamless infinite loop
    ============================================================================= */
+@keyframes marquee-to-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 @keyframes marquee-to-right {
   0% {
     transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translate3d(0%, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
-}
-
-@keyframes marquee-to-left {
-  0% {
-    transform: translate3d(0%, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.animate-marquee-right {
-  display: flex;
-  width: max-content;
-  animation: marquee-to-right 22s linear infinite;
-  will-change: transform;
 }
 
 .animate-marquee-left {
   display: flex;
   width: max-content;
-  animation: marquee-to-left 22s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  animation: marquee-to-left 24s linear infinite;
 }
 
-.animate-marquee-right:hover,
-.animate-marquee-left:hover {
-  animation-play-state: paused;
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  animation: marquee-to-right 24s linear infinite;
 }
+
+/* Animação contínua ininterrupta (não pausa ao passar mouse ou dedo) */
+.animate-marquee-left,
+.animate-marquee-right {
+  pointer-events: none;
+}
+
+.slide-img-crisp {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 
 
