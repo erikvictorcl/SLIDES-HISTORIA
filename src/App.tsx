@@ -1,5 +1,7 @@
 import React from 'react';
+import { TopBanner } from './components/TopBanner';
 import { Hero } from './components/Hero';
+import { PainPointsSection } from './components/PainPointsSection';
 import { SlidesCarousel } from './components/SlidesCarousel';
 import { SlidesCtaBanner } from './components/SlidesCtaBanner';
 import { ExclusiveBonuses } from './components/ExclusiveBonuses';
@@ -11,8 +13,14 @@ import { Guarantee } from './components/Guarantee';
 export default function App() {
   return (
     <main className="w-full min-h-screen bg-[#FAF9F6] text-[#1E293B]">
+      {/* 0. FAIXA NO TOPO DA PÁGINA */}
+      <TopBanner />
+
       {/* 1. HERO */}
       <Hero />
+
+      {/* 1.1 NOVA SEÇÃO: COM ESSE MATERIAL VOCÊ NÃO PRECISA MAIS */}
+      <PainPointsSection />
 
       {/* 2. SEÇÃO DE SLIDES — CARROSSEL */}
       <SlidesCarousel />

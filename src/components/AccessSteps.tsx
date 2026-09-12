@@ -14,6 +14,10 @@ export const AccessSteps: React.FC = () => {
       number: '3',
       text: 'Você acessa os materiais no Google Drive, escolhe o conteúdo e já pode utilizar em sala de aula',
     },
+    {
+      number: '4',
+      text: 'Material pronto para usar no PowerPoint, Google Slides, Canva, LibreOffice etc.',
+    },
   ];
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, BookOpen, ArrowRight } from 'lucide-react';
+import { Star, ArrowRight, ShieldCheck } from 'lucide-react';
 
 // =============================================================================
 // IMAGENS DOS DISPOSITIVOS NO HERO (NOTEBOOK E CELULAR)
@@ -33,15 +33,15 @@ export const Hero: React.FC = () => {
         <div className="flex items-center justify-center mb-5 sm:mb-6">
           <div 
             id="hero-badge"
-            className="inline-flex items-center gap-2 bg-[#FAF8F5] border border-[#EBE6DD] px-4 py-1.5 rounded-full shadow-xs"
+            className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#FAF8F5] border border-[#EBE6DD] px-3.5 sm:px-4 py-1.5 sm:py-1.5 rounded-full shadow-xs max-w-[340px] sm:max-w-none text-left sm:text-center"
           >
-            <div className="flex text-amber-500">
+            <div className="flex text-amber-500 shrink-0">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
               ))}
             </div>
-            <span className="text-xs sm:text-[13px] font-semibold text-slate-700">
-              Aprovado por +1.250 professores de História no Brasil
+            <span className="text-[11.5px] sm:text-[13px] font-semibold text-slate-700 leading-tight whitespace-normal sm:whitespace-nowrap">
+              Aprovado por +1.250 <span className="block sm:inline">professores de História no Brasil</span>
             </span>
           </div>
         </div>
@@ -49,24 +49,10 @@ export const Hero: React.FC = () => {
         {/* 2. HEADLINE PRINCIPAL */}
         <h1 
           id="hero-title"
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1B3B57] tracking-tight leading-[1.15] mb-5 sm:mb-6 font-display max-w-3xl"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1B3B57] tracking-tight leading-[1.15] mb-8 sm:mb-10 font-display max-w-3xl"
         >
-          +300 Slides de História para o <span className="text-[#26619C]">ENEM</span> com aulas mais{' '}
-          <span className="text-[#26619C]">visuais, organizadas</span> e prontas.
+          +300 <span className="text-[#26619C]">Slides de História para o ENEM</span> prontos para uso
         </h1>
-
-        {/* 2.1 BADGE ABAIXO DO TÍTULO (ESCOPO ESCOLAR) */}
-        <div className="flex items-center justify-center mb-8 sm:mb-10">
-          <div 
-            id="hero-scope-pill"
-            className="inline-flex items-center gap-2 border border-[#D3E3F2] px-4 py-1.5 rounded-full"
-          >
-            <BookOpen className="w-4 h-4 text-[#26619C] shrink-0 stroke-[1.75]" />
-            <span className="text-sm sm:text-[15px] font-medium text-[#1B3B57]">
-              Do 6º ano EF ao 3º ano EM
-            </span>
-          </div>
-        </div>
 
         {/* 3. MOCKUP PREMIUM: MACBOOK + IPHONE (COMPOSIÇÃO DE PRODUTO DIGITAL) */}
         <div id="hero-devices-mockup" className="relative w-full max-w-[800px] mb-8 sm:mb-10 mx-auto select-none">
@@ -200,7 +186,7 @@ export const Hero: React.FC = () => {
           </span>
           <span className="text-slate-300 hidden sm:inline" aria-hidden="true">•</span>
           <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-            <span>🛡</span>
+            <ShieldCheck className="w-4 h-4 text-[#059669] shrink-0 stroke-[2.2]" />
             <span>Garantia de 7 dias</span>
           </span>
         </div>
