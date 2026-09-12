@@ -51,7 +51,7 @@ export const Hero: React.FC = () => {
           id="hero-title"
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1B3B57] tracking-tight leading-[1.15] mb-8 sm:mb-10 font-display max-w-3xl"
         >
-          +300 <span className="text-[#26619C]">Slides de História para o ENEM</span> prontos para uso
+          +200 <span className="text-[#26619C]">Slides de História para o ENEM</span> prontos para uso
         </h1>
 
         {/* 3. MOCKUP PREMIUM: MACBOOK + IPHONE (COMPOSIÇÃO DE PRODUTO DIGITAL) */}
