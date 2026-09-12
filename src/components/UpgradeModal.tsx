@@ -136,7 +136,12 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
               href="https://pay.cakto.com.br/m2q7b68"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={onSelectUpgrade}
+              onClick={(e) => {
+                e.preventDefault();
+                const targetUrl = e.currentTarget.href || 'https://pay.cakto.com.br/m2q7b68';
+                window.open(targetUrl, '_blank', 'noopener,noreferrer');
+                onSelectUpgrade();
+              }}
               className="w-full bg-[#16A34A] hover:bg-[#15803D] text-white py-3.5 sm:py-4 px-4 rounded-2xl font-black text-sm sm:text-base tracking-wide cursor-pointer shadow-[0_8px_20px_rgba(22,163,74,0.3)] hover:shadow-[0_10px_24px_rgba(22,163,74,0.4)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-center select-none"
             >
               <span>SIM! Quero o Pacote Completo por + R$ 17,90</span>
@@ -148,7 +153,12 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
               href="https://pay.cakto.com.br/rs6zjjd_1099726"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={onSelectBasic}
+              onClick={(e) => {
+                e.preventDefault();
+                const targetUrl = e.currentTarget.href || 'https://pay.cakto.com.br/rs6zjjd_1099726';
+                window.open(targetUrl, '_blank', 'noopener,noreferrer');
+                onSelectBasic();
+              }}
               className="w-full bg-white hover:bg-slate-50 border border-slate-200/90 text-slate-500 hover:text-slate-700 py-2.5 sm:py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm cursor-pointer transition-colors block text-center select-none"
             >
               <span>Continuar apenas com o Pacote Básico</span>

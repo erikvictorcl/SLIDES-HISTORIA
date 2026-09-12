@@ -13,6 +13,12 @@ export const Pricing: React.FC = () => {
     setIsUpgradeModalOpen(true);
   };
 
+  const handleOpenCompleteCheckout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const targetUrl = e.currentTarget.href || CHECKOUT_URL_COMPLETE;
+    window.open(targetUrl, '_blank', 'noopener,noreferrer');
+  };
+
   const handleConfirmUpgrade = () => {
     setIsUpgradeModalOpen(false);
   };
@@ -216,6 +222,7 @@ export const Pricing: React.FC = () => {
                 href={CHECKOUT_URL_COMPLETE}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleOpenCompleteCheckout}
                 className="w-full bg-[#16A34A] hover:bg-[#15803D] text-white py-4 px-6 rounded-2xl font-black text-base sm:text-lg tracking-wide cursor-pointer shadow-[0_10px_24px_rgba(22,163,74,0.3)] hover:shadow-[0_12px_28px_rgba(22,163,74,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-center select-none"
               >
                 <span>Quero o Pacote Completo</span>
